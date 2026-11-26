@@ -6,15 +6,9 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "documentos")
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
 public class Documento {
 
     @Id
@@ -31,4 +25,55 @@ public class Documento {
     private String fechaCreacion;
 
     private String uriArchivo;
+
+    public Documento() {
+    }
+
+    public Documento(Integer id, String titulo, String contenido, String fechaCreacion, String uriArchivo) {
+        this.id = id;
+        this.titulo = titulo;
+        this.contenido = contenido;
+        this.fechaCreacion = fechaCreacion;
+        this.uriArchivo = uriArchivo;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public String getContenido() {
+        return contenido;
+    }
+
+    public void setContenido(String contenido) {
+        this.contenido = contenido;
+    }
+
+    public String getFechaCreacion() {
+        return fechaCreacion;
+    }
+
+    public void setFechaCreacion(String fechaCreacion) {
+        this.fechaCreacion = fechaCreacion;
+    }
+
+    public String getUriArchivo() {
+        return uriArchivo;
+    }
+
+    public void setUriArchivo(String uriArchivo) {
+        this.uriArchivo = uriArchivo;
+    }
 }
