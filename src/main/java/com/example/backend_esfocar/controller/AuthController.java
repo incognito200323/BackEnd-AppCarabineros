@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/v1/auth")
 public class AuthController {
 
     private final AuthService authService;
@@ -22,11 +22,10 @@ public class AuthController {
     }
 
     @GetMapping("/health")
-    public ResponseEntity> health() {
+    public ResponseEntity<?> health() {
         return ResponseEntity.ok(Map.of("status", "ok", "servicio", "esfocar-backend"));
     }
-
-    @PostMapping("/auth/login")
+    @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody LoginRequest request) {
         if (request.rut() == null || request.contrasena() == null
                 || request.rut().isBlank() || request.contrasena().isBlank()) {
@@ -39,7 +38,7 @@ public class AuthController {
                         .body(Map.of("mensaje", "RUT o contraseña incorrectos")));
     }
 
-    @PostMapping("/auth/register")
+    @PostMapping("/register")
     public ResponseEntity<?> register(@RequestBody Usuario usuario) {
         if (usuario.getRut() == null || usuario.getNombre() == null || usuario.getContrasena() == null
                 || usuario.getRut().isBlank() || usuario.getNombre().isBlank() || usuario.getContrasena().isBlank()) {
